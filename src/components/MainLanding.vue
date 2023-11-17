@@ -8,11 +8,7 @@
           Aliquam vulputate velit imperdiet dolor tempor tristique.
         </p>
         <div class="buttons">
-          <span class="shop">
-            <router-link :to="{ name: 'Shop' }">
-              Shop Now
-            </router-link>
-          </span>
+          <span class="shop">Shop Now</span>
           <span class="explore">Explore</span>
         </div>
       </div>
@@ -83,7 +79,7 @@ export default {
   width: clamp(240px, 780px, 100%);
 }
 
-.landing .buttons > * {
+.landing .buttons * {
   height: 50px;
   cursor: pointer;
   font-weight: 600;
