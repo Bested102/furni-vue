@@ -8,7 +8,11 @@
           Aliquam vulputate velit imperdiet dolor tempor tristique.
         </p>
         <div class="buttons">
-          <span class="shop">Shop Now</span>
+          <span class="shop">
+            <router-link :to="{ name: 'Shop' }">
+              Shop Now
+            </router-link>
+          </span>
           <span class="explore">Explore</span>
         </div>
       </div>
