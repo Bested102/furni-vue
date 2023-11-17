@@ -1,0 +1,26 @@
+[
+  {
+    "comment":"“Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.”",
+    "user":{
+      "name":"Maria Jones",
+      "info":"CEO, Co-Founder, XYZ Inc.",
+      "img":"https://themewagon.github.io/furni/images/person-1.png"
+    }
+  },
+  {
+    "comment": "“Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.”",
+    "user": {
+      "name": "Maria Jonson",
+      "info": "CEO, Co-Founder, XYZ Inc.",
+      "img": "https://themewagon.github.io/furni/images/person-1.png"
+    }
+  },
+  {
+    "comment": "“Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.”",
+    "user": {
+      "name": "John doe",
+      "info": "CEO, Co-Founder, XYZ Inc.",
+      "img": "https://themewagon.github.io/furni/images/person-1.png"
+    }
+  }
+]

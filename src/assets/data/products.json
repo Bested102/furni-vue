@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Nordic Chair",
+    "price": 54,
+    "img": "https://themewagon.github.io/furni/images/product-1.png",
+    "color":"white"
+  },
+  {
+    "id": 2,
+    "name": "Kruzo Aero Chair",
+    "price": 78,
+    "img": "https://themewagon.github.io/furni/images/product-2.png",
+    "color":"gray"
+  },
+  {
+    "id": 3,
+    "name": "Ergonomic Chair",
+    "price": 34,
+    "img": "https://themewagon.github.io/furni/images/product-3.png",
+    "color":"green"
+  },
+  {
+    "id": 4,
+    "name": "Nordic Chair",
+    "price": 38,
+    "img": "https://themewagon.github.io/furni/images/product-2.png",
+    "color":"gray"
+  },
+  {
+    "id": 5,
+    "name": "Ergonomic Chair",
+    "price": 56,
+    "img": "https://themewagon.github.io/furni/images/product-3.png",
+    "color":"green"
+  },
+  {
+    "id": 6,
+    "name": "Kruzo Aero Chair",
+    "price": 69,
+    "img": "https://themewagon.github.io/furni/images/product-1.png",
+    "color":"white"
+  },
+  {
+    "id": 7,
+    "name": "Nordic Chair",
+    "price": 72,
+    "img": "https://themewagon.github.io/furni/images/product-1.png",
+    "color":"white"
+  },
+  {
+    "id": 8,
+    "name": "Kruzo Aero Chair",
+    "price": 72,
+    "img": "https://themewagon.github.io/furni/images/product-2.png",
+    "color":"gray"
+  },
+  {
+    "id": 9,
+    "name": "Ergonomic Chair",
+    "price": 42,
+    "img": "https://themewagon.github.io/furni/images/product-3.png",
+    "color":"green"
+  },
+  {
+    "id": 10,
+    "name": "Nordic Chair",
+    "price": 67,
+    "img": "https://themewagon.github.io/furni/images/product-2.png",
+    "color":"gray"
+  },
+  {
+    "id": 11,
+    "name": "Ergonomic Chair",
+    "price": 75,
+    "img": "https://themewagon.github.io/furni/images/product-3.png",
+    "color":"green"
+  },
+  {
+    "id": 12,
+    "name": "Kruzo Aero Chair",
+    "price": 82,
+    "img": "https://themewagon.github.io/furni/images/product-1.png",
+    "color":"white"
+  }
+]

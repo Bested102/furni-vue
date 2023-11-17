@@ -1,0 +1,131 @@
+@import './base.css';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+/* ::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eff2f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+html{
+  scrollbar-gutter: stable;
+} */
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  background-color: #eff2f1;
+  color: var(--TextBlack);
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+@media screen and (max-width:767px) {
+  .section-title{
+    font-size: calc(1.48rem + .8vw);;
+  }
+}
+
+.section-p {
+  color: var(--TextGray);
+  font-weight: 400;
+  line-height: 28px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.black-btn {
+  background-color: var(--TextBlack);
+  color: white;
+  font-weight: 600;
+  padding: 15px 32px;
+  border-radius: 30px;
+  transition: 0.3s;
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.black-btn:hover {
+  background-color: #1f1f1f;
+}
+
+.container {
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+    width: 540px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width:992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .container {
+    width: 1150px;
+  }
+}
+
+body::before{
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.408);
+  width: 100%;
+  height: 100%;
+  z-index: -1000;
+  transition: opacity .3s;
+  opacity: 0;
+}
+
+body.overlay{
+  overflow: hidden;
+}
+
+body.overlay::before{
+  z-index: 500;
+  opacity: 1;
+}
