@@ -60,7 +60,7 @@ export default {
     },
     applyColor(products, color){
       let newProducts = products.filter((e)=>{
-        return e.color === color || color === "no-color"
+        return color.includes(e.color) || !color.length
       })
       return newProducts
     },

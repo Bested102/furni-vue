@@ -1,63 +1,64 @@
 <template>
   <div class="filter">
     <div class="container">
-      <div class="filter-wrapper" ref="pcFilter">
-        <input
-          type="text"
-          name="search"
-          autocomplete="new-password"
-          placeholder="Search for.."
-          class="search"
-          v-model="filter.keyWord"
-        />
-        <div class="color-filter" v-show="!isMobile || mobileFilter" ref="colorFilter">
-          <label>
-            <input type="radio" v-model="filter.color" name="color" value="white" />
-            <span>White</span>
-          </label>
-          <label>
-            <input type="radio" v-model="filter.color" name="color" value="gray" />
-            <span>Gray</span>
-          </label>
-          <label>
-            <input type="radio" v-model="filter.color" name="color" value="green" />
-            <span>Green</span>
-          </label>
-          <label class="input-remove">
-            <input type="radio" v-model="filter.color" name="color" value="no-color" checked />
-            <span>Clear</span>
-          </label>
-        </div>
-        <div class="price-filter" v-show="!isMobile || mobileFilter" ref="priceFilter">
-          <div class="input">
-            <input
-              type="number"
-              placeholder="Min"
-              @paste.prevent
-              @drop.prevent
-              name="minValue"
-              min="0"
-              :max="highest - 1"
-              v-model="filter.minValue"
-              onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
-            />
+      <div class="filter-wrapper-master">
+        <transition name="fade">
+          <span class="clear-all" @click="clearAll" v-if="!isMobile && isChanged">Clear All</span>
+        </transition>
+        <div class="filter-wrapper" ref="pcFilter">
+          <input
+            type="text"
+            name="search"
+            autocomplete="new-password"
+            placeholder="Search for.."
+            class="search"
+            v-model="filter.keyWord"
+          />
+          <div class="color-filter" v-show="!isMobile || mobileFilter" ref="colorFilter">
+            <label>
+              <input type="checkbox" v-model="filter.color" name="color" value="white" />
+              <span>White</span>
+            </label>
+            <label>
+              <input type="checkbox" v-model="filter.color" name="color" value="gray" />
+              <span>Gray</span>
+            </label>
+            <label>
+              <input type="checkbox" v-model="filter.color" name="color" value="green" />
+              <span>Green</span>
+            </label>
           </div>
-          <div class="input">
-            <input
-              type="number"
-              placeholder="Max"
-              @paste.prevent
-              @drop.prevent
-              name="minValue"
-              min="1"
-              :max="highest"
-              v-model="filter.maxValue"
-              onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
-            />
+          <div class="price-filter" v-show="!isMobile || mobileFilter" ref="priceFilter">
+            <div class="input">
+              <input
+                type="number"
+                placeholder="Min"
+                @paste.prevent
+                @drop.prevent
+                name="minValue"
+                min="0"
+                :max="highest - 1"
+                v-model="filter.minValue"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+              />
+            </div>
+            <div class="input">
+              <input
+                type="number"
+                placeholder="Max"
+                @paste.prevent
+                @drop.prevent
+                name="minValue"
+                min="1"
+                :max="highest"
+                v-model="filter.maxValue"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+              />
+            </div>
           </div>
-        </div>
-        <div class="filter-button" v-show="isMobile" @click="showFilter">
-          <span>Filter</span>
+          <div class="filter-button" v-show="isMobile" @click="showFilter">
+            <span>Filter</span>
+          </div>
         </div>
       </div>
     </div>
@@ -78,7 +79,7 @@ export default {
     return {
       filter: {
         keyWord: "",
-        color: "no-color",
+        color: [],
         minValue: "",
         maxValue: "",
       },
@@ -86,6 +87,13 @@ export default {
       timer: null,
       isMobile: false,
       mobileFilter: false
+    }
+  },
+  computed: {
+    isChanged() {
+      let condition = this.filter.minValue === "" && this.filter.maxValue === ""
+      console.log(condition)
+      return this.filter.color.length || !condition
     }
   },
   mounted() {
@@ -110,7 +118,6 @@ export default {
       let mobileFilter = this.$refs.mobileFilter
       mobileFilter.append(colorFilter, priceFilter)
     },
-
     hideFilter() {
       this.mobileFilter = false
       document.body.classList.remove("overlay")
@@ -122,7 +129,8 @@ export default {
     clearAll() {
       this.filter.minValue = ""
       this.filter.maxValue = ""
-      this.filter.color = "no-color"
+      this.filter.color = []
+      this.hideFilter()
     },
     checkScreen() {
       this.window = window.innerWidth;
@@ -161,11 +169,16 @@ export default {
   user-select: none;
 }
 
-.filter-wrapper {
+.filter-wrapper-master {
+  position: relative;
   background-color: white;
-  border: 1px solid #ced4da;
-  margin-inline: auto;
   max-width: 860px;
+  border-radius: 400px;
+  margin-inline: auto;
+}
+
+.filter-wrapper {
+  border: 1px solid #ced4da;
   border-radius: 400px;
   display: flex;
   overflow: hidden;
@@ -174,6 +187,26 @@ export default {
 
 .filter-wrapper > * {
   flex: 1 1 0;
+}
+
+.filter-wrapper-master .clear-all {
+  position: absolute;
+  right: 25px;
+  top: -20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: hsla(0, 0%, 18%, 0.8);
+  cursor: pointer;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: 0.25s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .search {
@@ -200,7 +233,7 @@ export default {
   cursor: pointer;
 }
 
-.color-filter label:not(.input-remove) input {
+.color-filter label input {
   appearance: none;
   width: 12px;
   aspect-ratio: 1;
@@ -211,25 +244,8 @@ export default {
   transition: 0.2s ease;
 }
 
-.color-filter .input-remove input {
-  appearance: none;
-}
-
-.color-filter .input-remove {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  color: var(--TextGray);
-  opacity: 0.8;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.color-filter .input-remove:has(input:checked) {
-  opacity: 0;
-}
-
-.color-filter input:checked {
+.color-filter label input:checked {
+  border-color: var(--MainColor);
   background-color: var(--MainColor);
 }
 
@@ -250,7 +266,7 @@ export default {
 
 .price-filter .input {
   width: 60px;
-  aspect-ratio: 1.8;
+  height: 33px;
   border-radius: 3px;
   outline: none;
   border: 1px solid #505050ce;
@@ -294,7 +310,7 @@ input::-webkit-inner-spin-button {
 
 .mobile-filter {
   width: 100%;
-  height: clamp(200px , 55% , 500px);
+  height: clamp(200px, 55%, 500px);
   background-color: white;
   position: fixed;
   z-index: 999;
@@ -309,7 +325,7 @@ input::-webkit-inner-spin-button {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #ced4da;
 }
 
@@ -333,6 +349,13 @@ input::-webkit-inner-spin-button {
 }
 
 .mobile-filter .price-filter {
+  padding: 0;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+
+.mobile-filter .price-filter .input {
+  width: clamp(60px, 160px, 45%);
 }
 
 .show-filter-enter-active,
@@ -353,17 +376,24 @@ input::-webkit-inner-spin-button {
   .price-filter {
     padding-inline: 15px 0;
   }
-  .filter-wrapper{
+  .filter-wrapper {
     padding-inline: 25px;
   }
 }
 
-@media screen and (max-width: 767px){
-  .filter-wrapper{
+@media screen and (max-width: 767px) {
+  .filter-wrapper {
     padding-inline: 20px;
   }
-  .search{
+  .search {
     padding-block: 20px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .mobile-filter .price-filter,
+  .mobile-filter .color-filter {
+    justify-content: center;
   }
 }
 </style>
