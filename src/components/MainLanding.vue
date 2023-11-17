@@ -83,7 +83,7 @@ export default {
   width: clamp(240px, 780px, 100%);
 }
 
-.landing .buttons * {
+.landing .buttons > * {
   height: 50px;
   cursor: pointer;
   font-weight: 600;
